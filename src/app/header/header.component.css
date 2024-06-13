@@ -1,0 +1,33 @@
+header {
+  
+    
+    text-align: center;
+    background-color: #EEE;
+    margin-bottom: 20px;
+    padding: 20px;
+    font-weight: bold;
+  }
+  a {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  .active {
+    color: #666;
+    text-decoration: underline;
+  }
+  image{
+    height: 10%;
+  }
+  .menu1{
+    float: right;
+  }
+  
+ 
+
+
