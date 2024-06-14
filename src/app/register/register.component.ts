@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { YService } from '../y.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ export class RegisterComponent {
 
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private serviceConnextion: YService) {
     this.myForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -22,7 +23,8 @@ export class RegisterComponent {
   onSubmit() {
     if (this.myForm.valid) {
       // Logic for form submission
-      console.log(this.myForm.value);
+      this.serviceConnextion.connextion(this.myForm.value.name, this.myForm.value.email, this.myForm.value.password, this.myForm.value.phone)
+      console.log(this.myForm.value.email);
     }
 
   }
