@@ -24,6 +24,27 @@ export class YService {
       (data)=>{
         console.log(data);
         localStorage.setItem('userdata', JSON.stringify(data));
+       this.route.navigate(['/connextion']);
+        
+      }
+    )
+    
+
+
+  }
+
+  connextion1( email: string, password: string){
+    let administrateur = {
+    "email":email,
+    "password": password,
+    }
+    const header = new HttpHeaders({
+      contentType:'application/json'
+    })
+    this.https.post('http://localhost:3000/admin/login',administrateur,{headers:header}).subscribe(
+      (data)=>{
+        console.log(data);
+        localStorage.setItem('userdata', JSON.stringify(data));
        this.route.navigate(['/dashboard']);
         
       }
@@ -32,4 +53,5 @@ export class YService {
 
 
   }
+  
 }
