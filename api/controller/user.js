@@ -40,5 +40,24 @@ async function UserLogin(req, res) {
       res.status(400).send({ message: error.message });
     }
   }
+
+ var addpreference= async(req,res)=>
+ {
+  try
+  {
+const body=req.body
+const preferencesdata= new preferencemodel()
+preferencesdata.name=body.name
+preferencesdata.courseOnMorning=body.courseOnMorning
+preferencesdata.courseOnEvening=body.courseOnEvening
+preferencemodel.havingDayOff=body.havingDayOff
+preferencemodel.preferredNumberOfHour=body.preferredNumberOfHour
+res.status(200).send({
+  "status":true, "message":"Your Preference has been registered"
+})
+  }catch(error){
+
+  }
+ }
   
-  module.exports={UserSignup,UserLogin}
+  module.exports={UserSignup,UserLogin,addpreference}
