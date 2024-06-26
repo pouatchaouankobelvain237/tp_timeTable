@@ -1,5 +1,6 @@
-const preferencemodel = require("../model/preferencesmodele");
+const PreferenceModel = require("../model/preferencesmodele");
 const Admin = require("../model/adminmodel");
+const { preProcessFile } = require("typescript");
 
 // signup
 async function UserSignup(req, res) {
@@ -41,23 +42,53 @@ async function UserLogin(req, res) {
     }
   }
 
- var addpreference= async(req,res)=>
+ const addpreference = async(req,res)=>
  {
   try
   {
-const body=req.body
-const preferencesdata= new preferencemodel()
-preferencesdata.name=body.name
-preferencesdata.courseOnMorning=body.courseOnMorning
-preferencesdata.courseOnEvening=body.courseOnEvening
-preferencemodel.havingDayOff=body.havingDayOff
-preferencemodel.preferredNumberOfHour=body.preferredNumberOfHour
+const preferencesdata= new PreferenceModel({
+  name:req.body.name,
+  courseOnMorning: req.body.courseOnMorning,
+  courseOnEvening: req.body.courseOnEvening,
+  havingDayOff: req.body.havingDayOff,
+  preferredNumberOfHour:req.body.preferredNumberOfHour,
+  userId:req.body.userId
+
+})
+await preferencesdata.save()
 res.status(200).send({
   "status":true, "message":"Your Preference has been registered"
 })
   }catch(error){
-
+  console.log(error)
   }
  }
   
-  module.exports={UserSignup,UserLogin,addpreference}
+const getpreference = async (req,res) => {
+  console.log("ifufusufffffffffffffffffffff")
+  console.log(req.query.userId)
+ try{
+
+  const userpreferences= await PreferenceModel.find({
+    userId: req.params.userId
+  })
+  res.status(200).send({
+    "preferences":userpreferences
+
+  })
+ }
+ catch(error){
+  console.log(error)
+ }
+}
+
+const updatepreference = async(req,res)=>{
+  try{
+ 
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+  
+  module.exports={UserSignup,UserLogin,addpreference,getpreference}
