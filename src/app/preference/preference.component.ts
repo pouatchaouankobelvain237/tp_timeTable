@@ -20,7 +20,6 @@ export class PreferenceComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.serviceConnextion.getprefereces();
   }
 
   onSubmit() {

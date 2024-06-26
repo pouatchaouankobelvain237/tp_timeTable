@@ -9,7 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 export class YService {
 
   constructor(private https: HttpClient, private route: Router) { }
-  
+  scheduleData:any=[];
   connextion( nom :string, email: string, password: string, tel:number){
     let administrateur = { 
     "nom":nom,
@@ -88,6 +88,8 @@ export class YService {
     this.https.get('http://localhost:3000/preferences/allpreferences/'+JSON.parse(localStorage.getItem('userdata')!).user._id,{headers:header}).subscribe(
       (data)=>{
         console.log(data);
+      this.scheduleData=data as any[];
+      return this.scheduleData
       },
       err=>{
         console.log(err);
