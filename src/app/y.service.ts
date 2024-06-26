@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
@@ -58,20 +58,42 @@ export class YService {
   "courseOnEvening":courseOnEvening,
   "havingDayOff":havingDaoff,
   "preferredNumberOfHour":numberOfhours,
+  "userId":JSON.parse(localStorage.getItem('userdata')!).user._id
    }
+   console.log(preferences);
    const header = new HttpHeaders({
     contentType:'application/json'
   })
-  this.https.post('http://localhost:3000/admin/add',preferences,{headers:header}).subscribe(
+  this.https.post('http://localhost:3000/preferences/add/',preferences,{headers:header}).subscribe(
     (data)=>{
       console.log(data);
-      localStorage.setItem('userdata', JSON.stringify(data));
       window.alert("preferences saved");
       
+    },
+    error=>{
+      console.log(error);
     }
   )
 
 
 
+  }
+  getprefereces(){
+   const param=new HttpParams({
+
+   }).set('userId',JSON.parse(localStorage.getItem('userdata')!).user._id)
+    const header= new HttpHeaders({
+       contectType:'application/json'
+    })
+    this.https.get('http://localhost:3000/preferences/allpreferences/'+JSON.parse(localStorage.getItem('userdata')!).user._id,{headers:header}).subscribe(
+      (data)=>{
+        console.log(data);
+      },
+      err=>{
+        console.log(err);
+      }
+      
+
+    )
   }
 }

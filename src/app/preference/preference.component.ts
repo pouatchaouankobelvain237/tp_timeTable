@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { YService } from '../y.service';
 
 @Component({
   selector: 'app-preference',
   templateUrl: './preference.component.html',
   styleUrl: './preference.component.css'
 })
-export class PreferenceComponent {
+export class PreferenceComponent implements OnInit{
   preferencesForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(public fb: FormBuilder,public serviceConnextion:YService) {
     this.preferencesForm = this.fb.group({
       earlySchedule: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
       lateSchedule: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
@@ -18,11 +19,27 @@ export class PreferenceComponent {
     });
   }
 
-  onSubmit() {
-    if (this.preferencesForm.valid) {
-      console.log('Form Values', this.preferencesForm.value);
-      // Envoyer les valeurs au backend ici
-    }
+  ngOnInit(): void {
+    this.serviceConnextion.getprefereces();
   }
+
+  onSubmit() {
+    let currentUSer=localStorage.getItem('userData');
+  
+
+    
+     
+      let name=currentUSer!;
+      
+      if (this.preferencesForm.valid) {
+      console.log("paul", this.preferencesForm.value);
+      this.serviceConnextion.adddata(name,this.preferencesForm.value.earlySchedule,this.preferencesForm.value.lateSchedule,this.preferencesForm.value.freeDays,this.preferencesForm.value.workHours);
+      // Envoyer les valeurs au backend ici
+      }
+      else(
+        console.log("Form not valid")
+      )
+    } 
+  
 
 }
