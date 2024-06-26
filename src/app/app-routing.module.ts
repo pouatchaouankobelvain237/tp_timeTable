@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { DahsbordComponent } from './dahsbord/dahsbord.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { PreferenceComponent } from './preference/preference.component';
+import { VoirpreferenceComponent } from './voirpreference/voirpreference.component';
 
 const routes: Routes = [
   {path: 'connextion', component: ConnexionComponent},
@@ -14,7 +15,9 @@ const routes: Routes = [
   {path: 'dashboard', component: DahsbordComponent,
     children: [
       { path: 'Timetable', component: TimetableComponent},
-      { path: 'Preference', component: PreferenceComponent}]
+      { path: 'Preference', component: PreferenceComponent},
+      { path: 'Voirpreference', component: VoirpreferenceComponent}
+    ]
   }
 
 ];

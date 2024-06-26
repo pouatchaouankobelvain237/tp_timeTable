@@ -25,6 +25,7 @@ import { PreferenceComponent } from './preference/preference.component';
 import { DahsbordComponent } from './dahsbord/dahsbord.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { FooterComponent } from './footer/footer.component';
+import { VoirpreferenceComponent } from './voirpreference/voirpreference.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FooterComponent } from './footer/footer.component';
     DahsbordComponent,
     TimetableComponent,
     FooterComponent,
+    VoirpreferenceComponent,
     
   ],
   imports: [
