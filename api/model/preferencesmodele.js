@@ -1,10 +1,9 @@
-const express = require('express');
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var preferencemodel= new Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const preferenceSchema= new Schema({
     name:{
         type:String,
-        required:true
+        required:false
     },
     courseOnMorning:{
         type:Number,
@@ -21,7 +20,15 @@ var preferencemodel= new Schema({
      preferredNumberOfHour:{
         type:String,
         required:true
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'admin'
     }
 
+
 });
-module.exports=mongoose.model('preferences',preferencemodel);  //Employee is the collection name in the
+module.exports = mongoose.model('AdministrationPreference',preferenceSchema);  //Employee is the collection name in the
+
+
