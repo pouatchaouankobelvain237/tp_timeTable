@@ -24,6 +24,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { PreferenceComponent } from './preference/preference.component';
 import { DahsbordComponent } from './dahsbord/dahsbord.component';
 import { TimetableComponent } from './timetable/timetable.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { TimetableComponent } from './timetable/timetable.component';
     PreferenceComponent,
     DahsbordComponent,
     TimetableComponent,
+    FooterComponent,
     
   ],
   imports: [

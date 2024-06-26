@@ -44,7 +44,7 @@ form {
   /* Style pour le bouton de soumission */
   button {
     padding: 10px 20px;
-    background-color: #4CAF50; /* Couleur verte pas trop foncée */
+    background-color: #FF7648; /* Couleur verte pas trop foncée */
     color: white;
     border: 1px solid #4CAF50; /* Bordure de la même couleur que le bouton */
     border-radius: 5px;
@@ -54,7 +54,7 @@ form {
   
   /* Effet au survol pour le bouton de soumission */
   button:hover {
-    background-color: #45a049;
+    background-color: #FF7648;
   }
   
   
