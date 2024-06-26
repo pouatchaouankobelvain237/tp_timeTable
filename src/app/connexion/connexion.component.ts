@@ -26,6 +26,18 @@ export class ConnexionComponent {
       this.login.connextion1( this.myForm.value.email, this.myForm.value.password)
       console.log(this.myForm.value.email);
     }
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if (loadingSpinner) {
+      loadingSpinner.style.display = 'flex';
+    }
+
+    // Simulez un délai pour le chargement (par exemple, 2 secondes)
+    setTimeout(() => {
+      if (loadingSpinner) {
+        loadingSpinner.style.display = 'none';
+      }
+      alert('Connexion réussie !'); // Remplacez cette ligne par la logique réelle de connexion
+    }, 2000);
 
   }
     
