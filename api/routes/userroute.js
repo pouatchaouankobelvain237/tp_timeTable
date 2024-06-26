@@ -6,6 +6,6 @@ const authentification=require('../authentification')
 
 router.post('/login',admincontroller.UserLogin)
 router.post('/signup',admincontroller.UserSignup)
-router.post('/add',authentification,admincontroller.addpreference)
+router.post('/add',admincontroller.addpreference)
 
 module.exports=router

@@ -49,9 +49,29 @@ export class YService {
         
       }
     )
-    
+  }
+  
+  adddata(name:string,courseOnmorning:number,courseOnEvening:number,havingDaoff:number,numberOfhours:number){
+   let preferences={
+  "name":name,
+  "courseOnMorning":courseOnmorning,
+  "courseOnEvening":courseOnEvening,
+  "havingDayOff":havingDaoff,
+  "preferredNumberOfHour":numberOfhours,
+   }
+   const header = new HttpHeaders({
+    contentType:'application/json'
+  })
+  this.https.post('http://localhost:3000/admin/add',preferences,{headers:header}).subscribe(
+    (data)=>{
+      console.log(data);
+      localStorage.setItem('userdata', JSON.stringify(data));
+      window.alert("preferences saved");
+      
+    }
+  )
+
 
 
   }
-  
 }
